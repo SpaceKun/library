@@ -1,0 +1,19 @@
+---
+- !ruby/object:Reader
+  name: Seva
+  email: "@gmail.com"
+  city: Dnipro
+  street: Mira
+  house: 1
+- !ruby/object:Reader
+  name: Dima
+  email: "@gmail.com"
+  city: Dnipro
+  street: Mira
+  house: 2
+- !ruby/object:Reader
+  name: Bogdan
+  email: "@gmail.com"
+  city: Dnipro
+  street: Mira
+  house: 3

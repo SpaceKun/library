@@ -1,0 +1,10 @@
+require "pry"
+require 'yaml'
+require "./entities/author.rb"
+require "./entities/book.rb"
+require "./entities/reader.rb"
+require "./entities/order.rb"
+require "./entities/library.rb"
+require "./data/data_author.rb"
+require "./data/data_reader.rb"
+# require "./validation.rb"

@@ -1,0 +1,7 @@
+---
+- !ruby/object:Author
+  name: Stas
+  biography:
+- !ruby/object:Author
+  name: Пушкин
+  biography:
