@@ -4,7 +4,7 @@
   email: "@gmail.com"
   city: Dnipro
   street: Mira
-  house: 1
+  house: 3
 - !ruby/object:Reader
   name: Dima
   email: "@gmail.com"
@@ -13,6 +13,24 @@
   house: 2
 - !ruby/object:Reader
   name: Bogdan
+  email: "@gmail.com"
+  city: Dnipro
+  street: Mira
+  house: 4
+- !ruby/object:Reader
+  name: Koly
+  email: "@gmail.com"
+  city: Dnipro
+  street: Mira
+  house: 3
+- !ruby/object:Reader
+  name: Alina
+  email: "@gmail.com"
+  city: Dnipro
+  street: Mira
+  house: 3
+- !ruby/object:Reader
+  name: Tanya
   email: "@gmail.com"
   city: Dnipro
   street: Mira
