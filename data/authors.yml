@@ -1,16 +1,16 @@
 ---
 - !ruby/object:Author
   name: Толстой
-  biography:
+  biography: ''
 - !ruby/object:Author
   name: Пушкин
   biography: Застрелили на дуэли
 - !ruby/object:Author
   name: Достоевский
-  biography:
+  biography: ''
 - !ruby/object:Author
   name: Шевченко
-  biography:
+  biography: ''
 - !ruby/object:Author
   name: Бу
   biography: Пишу книги

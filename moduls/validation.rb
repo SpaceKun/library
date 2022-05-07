@@ -16,5 +16,4 @@ module Validation
       raise ArgumentError.new("The argument(#{name_arg}) does not belong to the class: #{class_name}")
     end
   end
-
 end

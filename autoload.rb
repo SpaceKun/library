@@ -1,5 +1,6 @@
 require "pry"
 require 'yaml'
+require 'date'
 require "./moduls/validation.rb"
 require "./entities/author.rb"
 require "./entities/book.rb"

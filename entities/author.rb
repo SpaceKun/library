@@ -18,6 +18,6 @@ attr_accessor :name, :biography
 
   def validation_class!
     validation_class(@name, 'name', String)
-    # validation_class(@biography, 'biography', String)
+    validation_class(@biography, 'biography', String)
   end
 end

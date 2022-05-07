@@ -1,10 +1,10 @@
 class Book
 include Validation
-attr_accessor :title, :autor
+attr_accessor :title, :author
 
-  def initialize(title, autor)
+  def initialize(title, author)
     @title = title
-    @autor = autor
+    @author = author
     validation_length!
     validation_class!
   end
@@ -18,5 +18,6 @@ attr_accessor :title, :autor
 
   def validation_class!
     validation_class(@title, 'title', String)
+    validation_class(@author, 'author', Author)
   end
 end

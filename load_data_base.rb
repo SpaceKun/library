@@ -1,7 +1,7 @@
-author_1 = Author.new("Толстой")
+author_1 = Author.new("Толстой", "")
 author_2 = Author.new('Пушкин', 'Застрелили на дуэли')
-author_3 = Author.new('Достоевский')
-author_4 = Author.new('Шевченко')
+author_3 = Author.new('Достоевский', "")
+author_4 = Author.new('Шевченко', "")
 author_5 = Author.new('Бу', 'Пишу книги')
 
 authors_to_yaml = [author_1, author_2, author_3, author_4, author_5].to_yaml
@@ -41,18 +41,18 @@ file = File.new('./data/books.yml', 'w+')
 file.write(books_to_yaml)
 file.close
 
-date =  Time.new.strftime("%y.%m.%d %H:%M")
+# date =  Time.new.strftime("%y.%m.%d %H:%M")
 
-order_1 = Order.new(book_1, reader_3, date)
-order_2 = Order.new(book_3, reader_3, date)
-order_3 = Order.new(book_4, reader_3, date)
-order_4 = Order.new(book_4, reader_2, date)
-order_5 = Order.new(book_4, reader_5, date)
-order_6 = Order.new(book_4, reader_3, date)
-order_7 = Order.new(book_7, reader_1, date)
-order_8 = Order.new(book_7, reader_2, date)
-order_9 = Order.new(book_10, reader_1, date)
-order_10 = Order.new(book_10, reader_1, date)
+order_1 = Order.new(book_1, reader_3, '10.03.20')
+order_2 = Order.new(book_3, reader_3, '15.03.22')
+order_3 = Order.new(book_4, reader_3, '150320')
+order_4 = Order.new(book_4, reader_2, '18.07.21')
+order_5 = Order.new(book_4, reader_5, '21.03.22')
+order_6 = Order.new(book_4, reader_3, '20.03.18')
+order_7 = Order.new(book_7, reader_1, '20.03.20')
+order_8 = Order.new(book_7, reader_2, '20.04.21')
+order_9 = Order.new(book_10, reader_1, '28.05.22')
+order_10 = Order.new(book_10, reader_1, '29.03.21')
 
 orders_to_yaml = [order_1, order_2, order_3, order_4, order_5, order_6, order_7, order_8, order_9, order_10].to_yaml
 

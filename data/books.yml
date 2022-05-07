@@ -1,41 +1,41 @@
 ---
 - !ruby/object:Book
   title: Война
-  autor: &1 !ruby/object:Author
+  author: &1 !ruby/object:Author
     name: Толстой
-    biography:
+    biography: ''
 - !ruby/object:Book
   title: Мир
-  autor: *1
+  author: *1
 - !ruby/object:Book
   title: Война и мир
-  autor: *1
+  author: *1
 - !ruby/object:Book
   title: Русалочка
-  autor: !ruby/object:Author
+  author: !ruby/object:Author
     name: Пушкин
     biography: Застрелили на дуэли
 - !ruby/object:Book
   title: Идиот
-  autor: &2 !ruby/object:Author
+  author: &2 !ruby/object:Author
     name: Достоевский
-    biography:
+    biography: ''
 - !ruby/object:Book
   title: Преступление и наказание
-  autor: *2
+  author: *2
 - !ruby/object:Book
   title: Енеида
-  autor: &3 !ruby/object:Author
+  author: &3 !ruby/object:Author
     name: Шевченко
-    biography:
+    biography: ''
 - !ruby/object:Book
   title: Кабзарь
-  autor: *3
+  author: *3
 - !ruby/object:Book
   title: Сварог
-  autor: &4 !ruby/object:Author
+  author: &4 !ruby/object:Author
     name: Бу
     biography: Пишу книги
 - !ruby/object:Book
   title: Дартаньян
-  autor: *4
+  author: *4
