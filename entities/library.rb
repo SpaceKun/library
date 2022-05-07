@@ -1,4 +1,5 @@
 class Library
+  include YAML
   include Validation
 
   def initialize(books, orders, readers, authors)
@@ -8,6 +9,12 @@ class Library
     @authors = authors
     validation_class!
   end
+
+ books = YAML.load_file('./data/books.yml', permitted_classes: [Author, Book])
+# books = Psych.load_file('./data/books.yml', permitted_classes: [Book, Author])
+authors = Psych.load_file('./data/authors.yml', permitted_classes: [Author])
+puts authors.first.name
+puts books.first.name
 
   private
 

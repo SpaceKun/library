@@ -13,7 +13,7 @@ module Validation
 
   def validation_class(arg, name_arg, class_name)
     unless arg.is_a?(class_name)
-      raise ArgumentError.new("The argument(#{name_arg}) does not belong to the class: #{class_name}")
+      raise ArgumentError.new("The argument (#{name_arg}) does not belong to the class: #{class_name}")
     end
   end
 end
