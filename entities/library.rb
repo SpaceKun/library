@@ -1,27 +1,22 @@
 class Library
-  include YAML
+  include Loader
   include Validation
+  attr_reader :books, :orders, :readers, :authors
 
-  def initialize(books, orders, readers, authors)
-    @books = books
-    @orders = orders
-    @readers = readers
-    @authors = authors
-    validation_class!
+  def initialize
+    @books = load_yaml_file("books.yml")
+    @orders = load_yaml_file("orders.yml")
+    @readers = load_yaml_file("readers.yml")
+    @authors = load_yaml_file("authors.yml")
+    # validate_class!
   end
 
- books = YAML.load_file('./data/books.yml', permitted_classes: [Author, Book])
-# books = Psych.load_file('./data/books.yml', permitted_classes: [Book, Author])
-authors = Psych.load_file('./data/authors.yml', permitted_classes: [Author])
-puts authors.first.name
-puts books.first.name
+  # private
 
-  private
-
-  def validation_class!
-    validation_class(@boks, 'books', Book)
-    validation_class(@orders, 'orders', Order)
-    validation_class(@readers, 'readers', Reader)
-    validation_class(@authors, 'authors', Author)
-  end
+  # def validate_class!
+  #   validate_class(@boks, 'books', Book)
+  #   validate_class(@orders, 'orders', Order)
+  #   validate_class(@readers, 'readers', Reader)
+  #   validate_class(@authors, 'authors', Author)
+  # end
 end

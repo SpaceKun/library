@@ -8,25 +8,29 @@ class Reader
     @city = city
     @street = street
     @house = house
-    validation_length!
-    validation_class!
+    validate_length!
+    validate_class!
+    validate_positive!
   end
 
   private
 
-  def validation_length!
-    validation_length(@name, 1, 'name', String)
-    validation_length(@email, 1, 'email', String)
-    validation_length(@city, 1, 'city', String)
-    validation_length(@street, 1, 'street', String)
-    validation_length(@house, 1, 'house', Integer)
+  def validate_length!
+    validate_length(@name, 'name', String, min_length:1)
+    validate_length(@email, 'email', String, min_length:1)
+    validate_length(@city, 'city', String, min_length:1)
+    validate_length(@street, 'street', String, min_length:1)
   end
 
-  def validation_class!
-    validation_class(@name, 'name', String)
-    validation_class(@email, 'email', String)
-    validation_class(@city, 'city', String)
-    validation_class(@street, 'street', String)
-    validation_class(@house, 'house', Integer)
+  def validate_class!
+    validate_class(@name, 'name', String)
+    validate_class(@email, 'email', String)
+    validate_class(@city, 'city', String)
+    validate_class(@street, 'street', String)
+    validate_class(@house, 'house', Integer)
+  end
+
+  def validate_positive!
+    validate_positive(@house, 'house')
   end
 end
