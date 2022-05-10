@@ -2,7 +2,7 @@ class Order
   include Validation
   attr_reader :book, :reader, :date
 
-  def initialize(book, reader, date = nil)
+  def initialize(book, reader, date)
     @book = book
     @reader = reader
     @date = Date.parse(date)

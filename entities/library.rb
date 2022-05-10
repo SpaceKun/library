@@ -1,4 +1,5 @@
 class Library
+  include Add
   include Loader
   include Validation
   attr_reader :books, :orders, :readers, :authors
@@ -9,6 +10,12 @@ class Library
     @readers = load_yaml_file("readers.yml")
     @authors = load_yaml_file("authors.yml")
     # validate_class!
+  end
+
+  def save(name_library: , name_file:)
+    name = name_file.downcase.delete('.yml')
+    name_file = [name_library.authors.last].to_yaml
+    file = File.open("./data/#{name}.yml", 'a') { |file| file.write(name_file)}
   end
 
   # private

@@ -14,3 +14,7 @@
 - !ruby/object:Author
   name: Бу
   biography: Пишу книги
+---
+- !ruby/object:Author
+  name: Big bos
+  biography: xer
