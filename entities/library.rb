@@ -1,29 +1,27 @@
 class Library
-  include Add
-  include Loader
-  include Validation
+  include Storage
+
   attr_reader :books, :orders, :readers, :authors
 
   def initialize
-    @books = load_yaml_file("books.yml")
-    @orders = load_yaml_file("orders.yml")
-    @readers = load_yaml_file("readers.yml")
-    @authors = load_yaml_file("authors.yml")
-    # validate_class!
+    @books = books
+    @orders = orders
+    @readers = readers
+    @authors = authors
+    load!
   end
 
-  def save(name_library: , name_file:)
-    name = name_file.downcase.delete('.yml')
-    name_file = [name_library.authors.last].to_yaml
-    file = File.open("./data/#{name}.yml", 'a') { |file| file.write(name_file)}
+  def load!
+    @books = load_yaml_file(name_file: 'books.yml')
+    @orders = load_yaml_file(name_file: 'orders.yml')
+    @readers = load_yaml_file(name_file: 'readers.yml')
+    @authors = load_yaml_file(name_file: 'authors.yml')
   end
 
-  # private
-
-  # def validate_class!
-  #   validate_class(@boks, 'books', Book)
-  #   validate_class(@orders, 'orders', Order)
-  #   validate_class(@readers, 'readers', Reader)
-  #   validate_class(@authors, 'authors', Author)
-  # end
+  def save!
+    save(lib_entitie: @books, class_entitie: 'Book')
+    save(lib_entitie: @orders, class_entitie: 'Order')
+    save(lib_entitie: @readers, class_entitie: 'Reader')
+    save(lib_entitie: @authors, class_entitie: 'Author')
+  end
 end

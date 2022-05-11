@@ -1,27 +1,12 @@
-require "./autoload.rb"
-
+require './autoload'
 
 library = Library.new
 
-# # author = library.add_author("Vasil", "pisaet sidy")
-# # book = library.add_book('Kak kakat?', author)
+library.authors.push(Author.new('Seryoga', 'Gylik'))
+library.authors.push(Author.new('Ser', ))
+library.books.push(Book.new('Брюс всемогущий', library.authors.last))
 
-# library.save
-# library.save(book, 'books')
-# binding pry
+library.save!
 
-# puts library.authors.last.name
-
-library.add_author(library,"Big bos", 'xer')
-
-
-
-
-library.save(name_library: library, name_file: 'authors.yml')
-
-
-puts library.authors.last
-
-name = Psych.load_file("./data/authors.yml")
-
-puts name.last.name.name
+puts library.authors
+puts library.books

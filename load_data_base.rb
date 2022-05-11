@@ -1,7 +1,7 @@
-author_1 = Author.new("Толстой", "")
+author_1 = Author.new('Толстой', '')
 author_2 = Author.new('Пушкин', 'Застрелили на дуэли')
-author_3 = Author.new('Достоевский', "")
-author_4 = Author.new('Шевченко', "")
+author_3 = Author.new('Достоевский', '')
+author_4 = Author.new('Шевченко', '')
 author_5 = Author.new('Бу', 'Пишу книги')
 
 authors_to_yaml = [author_1, author_2, author_3, author_4, author_5].to_yaml
@@ -10,13 +10,12 @@ file = File.new('./data/authors.yml', 'w+')
 file.write(authors_to_yaml)
 file.close
 
-
-reader_1 = Reader.new("Seva", "@gmail.com", "Dnipro", "Mira", 3)
-reader_2 = Reader.new("Dima", "@gmail.com", "Dnipro", "Mira", 2)
-reader_3 = Reader.new("Bogdan", "@gmail.com", "Dnipro", "Mira", 4)
-reader_4 = Reader.new("Koly", "@gmail.com", "Dnipro", "Mira", 3)
-reader_5 = Reader.new("Alina", "@gmail.com", "Dnipro", "Mira", 3)
-reader_6 = Reader.new("Tanya", "@gmail.com", "Dnipro", "Mira", 3)
+reader_1 = Reader.new('Seva', '@gmail.com', 'Dnipro', 'Mira', 3)
+reader_2 = Reader.new('Dima', '@gmail.com', 'Dnipro', 'Mira', 2)
+reader_3 = Reader.new('Bogdan', '@gmail.com', 'Dnipro', 'Mira', 4)
+reader_4 = Reader.new('Koly', '@gmail.com', 'Dnipro', 'Mira', 3)
+reader_5 = Reader.new('Alina', '@gmail.com', 'Dnipro', 'Mira', 3)
+reader_6 = Reader.new('Tanya', '@gmail.com', 'Dnipro', 'Mira', 3)
 
 readers_to_yaml = [reader_1, reader_2, reader_3, reader_4, reader_5, reader_6].to_yaml
 
@@ -40,8 +39,6 @@ books_to_yaml = [book_1, book_2, book_3, book_4, book_5, book_6, book_7, book_8,
 file = File.new('./data/books.yml', 'w+')
 file.write(books_to_yaml)
 file.close
-
-# date =  Time.new.strftime("%y.%m.%d %H:%M")
 
 order_1 = Order.new(book_1, reader_3, '10.03.20')
 order_2 = Order.new(book_3, reader_3, '15.03.22')

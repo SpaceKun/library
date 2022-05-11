@@ -13,7 +13,7 @@ class Author
   private
 
   def validate_length!
-    validate_length(@name, 'name', String, min_length:1)
+    validate_length(@name, 'name', String, min_length: 1)
   end
 
   def validate_class!

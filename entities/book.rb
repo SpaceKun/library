@@ -12,7 +12,7 @@ class Book
   private
 
   def validate_length!
-    validate_length(@title, 'title', String, min_length:1)
+    validate_length(@title, 'title', String, min_length: 1)
   end
 
   def validate_class!
