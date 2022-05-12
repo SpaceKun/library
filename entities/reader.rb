@@ -13,6 +13,17 @@ class Reader
     validate_positive!
   end
 
+  def to_s
+    "Читатель:
+    Имя: #{name}
+    Еmail: #{email}
+    Город: #{city}
+    Улица: #{street}
+    Дом: #{house}"
+  end
+
+
+
   private
 
   def validate_length!

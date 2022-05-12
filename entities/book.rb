@@ -1,5 +1,6 @@
 class Book
   include Validation
+
   attr_reader :title, :author
 
   def initialize(title, author)
@@ -7,6 +8,10 @@ class Book
     @author = author
     validate_length!
     validate_class!
+  end
+
+  def to_s
+    "Название книги: #{title}, автора: #{author}"
   end
 
   private

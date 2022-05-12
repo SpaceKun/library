@@ -1,13 +1,14 @@
 class Library
   include Storage
+  include Statistical
 
   attr_reader :books, :orders, :readers, :authors
 
   def initialize
-    @books = books
-    @orders = orders
-    @readers = readers
-    @authors = authors
+    @books
+    @orders
+    @readers
+    @authors
     load!
   end
 
@@ -23,5 +24,9 @@ class Library
     save(lib_entitie: @orders, class_entitie: 'Order')
     save(lib_entitie: @readers, class_entitie: 'Reader')
     save(lib_entitie: @authors, class_entitie: 'Author')
+  end
+
+  def top_book!( number_of_top)
+    top_book(@order, number_of_top)
   end
 end
