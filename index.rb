@@ -8,5 +8,9 @@ library.books.push(Book.new('Брюс всемогущий', library.authors.las
 
 library.save!
 
-puts library.authors
-puts library.books
+# puts library.authors
+# puts library.orders
+# puts library.readers
+# puts library.books
+# puts library.orders.first.reader.name
+  library.top_book!(1)

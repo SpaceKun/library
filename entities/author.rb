@@ -10,6 +10,10 @@ class Author
     validate_class!
   end
 
+  def to_s
+    "Автор: #{name}"
+  end
+
   private
 
   def validate_length!

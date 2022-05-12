@@ -1,5 +1,6 @@
 class Order
   include Validation
+
   attr_reader :book, :reader, :date
 
   def initialize(book, reader, date)
@@ -7,6 +8,12 @@ class Order
     @reader = reader
     @date = Date.parse(date)
     validate_class!
+  end
+
+  def to_s
+    "Заказ на книгу: #{book}
+    от #{reader}
+    был оформлен такого числа: #{date}"
   end
 
   private
