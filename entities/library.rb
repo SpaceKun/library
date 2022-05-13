@@ -4,14 +4,6 @@ class Library
   attr_reader :books, :orders, :readers, :authors
 
   def initialize
-    @books = books
-    @orders = orders
-    @readers = readers
-    @authors = authors
-    load!
-  end
-
-  def load!
     @books = load_yaml_file(name_file: 'books.yml')
     @orders = load_yaml_file(name_file: 'orders.yml')
     @readers = load_yaml_file(name_file: 'readers.yml')
