@@ -13,4 +13,5 @@ library.save!
 # puts library.readers
 # puts library.books
 # puts library.orders.first.reader.name
-  library.top_book!(1)
+#  puts library.top_book(1).title
+puts library.top_book(2).each { |book| puts book.title }

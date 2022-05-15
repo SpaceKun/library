@@ -11,9 +11,14 @@ class Order
   end
 
   def to_s
-    "Заказ на книгу: #{book}
-    от #{reader}
-    был оформлен такого числа: #{date}"
+    <<~INFO
+    Заказ на книгу:
+    #{book}
+    Купил:
+    #{reader}
+    был оформлен такого числа:
+    #{date}
+    INFO
   end
 
   private
