@@ -14,12 +14,14 @@ class Reader
   end
 
   def to_s
-    "Читатель:
+  <<~INFO
+    Читатель:
     Имя: #{name}
     Еmail: #{email}
     Город: #{city}
     Улица: #{street}
-    Дом: #{house}"
+    Дом: #{house}
+    INFO
   end
 
 

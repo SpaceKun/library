@@ -10,9 +10,9 @@ class Book
     validate_class!
   end
 
-  def to_s
-    "Название книги: #{title}, автора: #{author}"
-  end
+  # def to_s
+  #   "Название книги: #{title}, автора: #{author}"
+  # end
 
   private
 
