@@ -11,32 +11,29 @@ class Library
   end
 
   def save!
-    save(lib_entitie: @books, class_entitie: 'Book')
-    save(lib_entitie: @orders, class_entitie: 'Order')
-    save(lib_entitie: @readers, class_entitie: 'Reader')
-    save(lib_entitie: @authors, class_entitie: 'Author')
+    save(lib_entities: @books, class_entities: 'Book')
+    save(lib_entities: @orders, class_entities: 'Order')
+    save(lib_entities: @readers, class_entities: 'Reader')
+    save(lib_entities: @authors, class_entities: 'Author')
   end
 
-  def top_book(book)
-    hash_orders = orders.group_by(&:book).map {|title_book, count_book| [title_book, count_book.length]}
-    sort_orders = hash_orders.sort_by { |title_book, count_book| count_book }
+  def top_reader(count = 1)
+    orders.group_by(&:reader)
+          .transform_values(&:length)
+          .sort_by { |_k, v| v }
+          .reverse
+          .to_h
+          .keys
+          .first(count)
+  end
 
-    if book.is_a?(Integer) && book == 1
-      sort_orders.reverse.first.detect {|title_book| title_book.is_a?(Book)}
-    elsif book.is_a?(Integer)
-    #  a = sort_orders.reverse.first(book).each { |x| x.delete_if { |i| i.is_a?(Integer) }}
-    #  a.each { |x| x.detect {|title_book| title_book.is_a?(Book)}}
-    end
+  def top_book(count = 1)
+    orders.group_by(&:book)
+          .transform_values(&:length)
+          .sort_by { |_k, v| v }
+          .reverse
+          .to_h
+          .keys
+          .first(count)
   end
 end
-
-# def top_book(book)
-#   hash_orders = orders.group_by(&:book).map {|title_book, count_book| [title_book, count_book.length]}
-#   sort_orders = hash_orders.sort_by { |title_book, count_book| count_book }
-
-#   if book.is_a?(Integer) && book == 1
-#     sort_orders.reverse.first.delete_if { |i| i.is_a?(Integer) }
-#   elsif book.is_a?(Integer)
-#     sort_orders.reverse.first(book)
-#   end
-# end

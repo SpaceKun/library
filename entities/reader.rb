@@ -13,19 +13,6 @@ class Reader
     validate_positive!
   end
 
-  def to_s
-  <<~INFO
-    Читатель:
-    Имя: #{name}
-    Еmail: #{email}
-    Город: #{city}
-    Улица: #{street}
-    Дом: #{house}
-    INFO
-  end
-
-
-
   private
 
   def validate_length!
