@@ -10,17 +10,6 @@ class Order
     validate_class!
   end
 
-  def to_s
-    <<~INFO
-    Заказ на книгу:
-    #{book}
-    Купил:
-    #{reader}
-    был оформлен такого числа:
-    #{date}
-    INFO
-  end
-
   private
 
   def validate_class!
