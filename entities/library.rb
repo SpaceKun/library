@@ -33,7 +33,7 @@ class Library
 
   def count_readers_top_book(count = 3)
     top_book_all_orders = orders.group_by(&:book).max_by(count) { |_k, v| v.count }
-    top_book_order.each do |book, orders|
+    top_book_all_orders.each do |book, orders|
       num_readers = orders.map(&:reader).uniq.count
       book = book.title
       puts "#{book} has #{num_readers} readers"
