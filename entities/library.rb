@@ -19,21 +19,24 @@ class Library
 
   def top_reader(count = 1)
     orders.group_by(&:reader)
-          .transform_values(&:length)
-          .sort_by { |_k, v| v }
-          .reverse
+          .max_by(count) { |_k, v| v.count }
           .to_h
           .keys
-          .first(count)
   end
 
   def top_book(count = 1)
     orders.group_by(&:book)
-          .transform_values(&:length)
-          .sort_by { |_k, v| v }
-          .reverse
+          .max_by(count) { |_k, v| v.count }
           .to_h
           .keys
-          .first(count)
+  end
+
+  def count_readers_top_book(count = 3)
+    top_book_all_orders = orders.group_by(&:book).max_by(count) { |_k, v| v.count }
+    top_book_order.each do |book, orders|
+      num_readers = orders.map(&:reader).uniq.count
+      book = book.title
+      puts "#{book} has #{num_readers} readers"
+    end
   end
 end
