@@ -11,10 +11,10 @@ class Library
   end
 
   def save!
-    save(lib_entities: @books, class_entities: 'Book')
-    save(lib_entities: @orders, class_entities: 'Order')
-    save(lib_entities: @readers, class_entities: 'Reader')
-    save(lib_entities: @authors, class_entities: 'Author')
+    save(lib_entities: @books, class_entity: 'Book')
+    save(lib_entities: @orders, class_entity: 'Order')
+    save(lib_entities: @readers, class_entity: 'Reader')
+    save(lib_entities: @authors, class_entity: 'Author')
   end
 
   def top_reader(count = 1)
@@ -32,11 +32,10 @@ class Library
   end
 
   def count_readers_top_book(count = 3)
-    top_book_all_orders = orders.group_by(&:book).max_by(count) { |_k, v| v.count }
-    top_book_all_orders.each do |book, orders|
-      num_readers = orders.map(&:reader).uniq.count
-      book = book.title
-      puts "#{book} has #{num_readers} readers"
+   top_book_title = top_book(count).map(&:title)
+    orders_with_top_book = orders.select do |order|
+      top_book_title.include?(order.book.title)
     end
+    orders_with_top_book.map(&:reader).uniq(&:email).count
   end
 end
