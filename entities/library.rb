@@ -25,7 +25,10 @@ class Library
   end
 
   def top_book(count = 1)
-    top(count, :book)
+    orders.group_by(&:book)
+          .max_by(count) { |_k, v| v.count }
+          .to_h
+          .keys
   end
 
   def count_readers_top_book(count = 3)
@@ -36,14 +39,4 @@ class Library
       puts "#{book} has #{num_readers} readers"
     end
   end
-  private
-
-  def top(count, :entity)
-    orders.group_by(&:entity)
-          .max_by(count) { |_k, v| v.count }
-          .to_h
-          .keys
-  end
-
-
 end
