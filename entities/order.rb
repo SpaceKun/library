@@ -1,5 +1,6 @@
 class Order
   include Validation
+
   attr_reader :book, :reader, :date
 
   def initialize(book, reader, date)

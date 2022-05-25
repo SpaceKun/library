@@ -3,7 +3,7 @@ class Author
   attr_reader :name
   attr_accessor :biography
 
-  def initialize(name, biography = nil)
+  def initialize(name, biography = '')
     @name = name
     @biography = biography
     validate_length!
