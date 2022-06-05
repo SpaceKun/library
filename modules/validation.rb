@@ -12,6 +12,6 @@ module Validation
   end
 
   def validate_positive(arg, name_arg)
-    raise ArgumentError, "The argument #{name_arg}) does not positive" unless arg.positive?
+    raise ArgumentError, "The argument (#{name_arg}) does not positive" unless arg.positive?
   end
 end

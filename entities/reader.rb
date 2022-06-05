@@ -8,8 +8,8 @@ class Reader
     @city = city
     @street = street
     @house = house
-    validate_length!
     validate_class!
+    validate_length!
     validate_positive!
   end
 
