@@ -1,7 +1,7 @@
 module Validation
   def validate_length(arg, name_arg, _class_name, min_length: 1)
     unless arg.length > min_length
-      raise ArgumentError, " The size of the argument(#{name_arg}) must be greater than #{min_length} elements"
+      raise ArgumentError, "The size of the argument (#{name_arg}) must be greater than #{min_length} elements"
     end
   end
 

@@ -6,8 +6,8 @@ class Author
   def initialize(name, biography = '')
     @name = name
     @biography = biography
-    validate_length!
     validate_class!
+    validate_length!
   end
 
   private
