@@ -17,7 +17,6 @@ reader_4 = Reader.new('Koly', 'Koly@gmail.com', 'Dnipro', 'Mira', 3)
 reader_5 = Reader.new('Alina', 'Alina@gmail.com', 'Dnipro', 'Mira', 3)
 reader_6 = Reader.new('Tanya', 'Tanya@gmail.com', 'Dnipro', 'Mira', 3)
 
-
 readers_to_yaml = [reader_1, reader_2, reader_3, reader_4, reader_5, reader_6].to_yaml
 
 file = File.new('./data/readers.yml', 'w+')

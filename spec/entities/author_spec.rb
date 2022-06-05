@@ -3,21 +3,21 @@ RSpec.describe Author do
   let(:biography) { 'biography' }
 
   describe 'success' do
-    it 'should create a new author' do
-      expect { Author.new(name, biography) }.not_to raise_error
+    it 'creates a new author' do
+      expect { described_class.new(name, biography) }.not_to raise_error
     end
 
     it 'sets attributes properly' do
-      author = Author.new(name, biography)
+      author = described_class.new(name, biography)
       expect(author.name).to eq(name)
       expect(author.biography).to eq(biography)
     end
 
-    context 'When biography is nil' do
+    context 'when biography is nil' do
       let(:biography) { '' }
 
-      it 'should create author without biography' do
-        expect { Author.new(name, biography) }.not_to raise_error
+      it 'creates author without biography' do
+        expect { described_class.new(name, biography) }.not_to raise_error
       end
     end
   end
@@ -26,8 +26,8 @@ RSpec.describe Author do
     context 'when name is nil' do
       let(:name) { nil }
 
-      it 'should raise an error' do
-        expect { Author.new(name, biography) }.to raise_error(
+      it 'raises an error' do
+        expect { described_class.new(name, biography) }.to raise_error(
           ArgumentError, "The argument \(name\) does not belong to the class: String"
         )
       end
@@ -35,10 +35,11 @@ RSpec.describe Author do
 
     context 'when name is short' do
       let(:name) { '' }
+
       min_length = 1
 
-      it 'should raise an error' do
-        expect { Author.new(name, biography) }.to raise_error(
+      it 'raises an error' do
+        expect { described_class.new(name, biography) }.to raise_error(
           ArgumentError, "The size of the argument \(name\) must be greater than #{min_length} elements"
         )
       end
