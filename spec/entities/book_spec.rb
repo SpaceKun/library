@@ -15,13 +15,14 @@ RSpec.describe Book do
   end
 
   describe 'failure' do
-    context 'when title is nil'
-    let(:title) { nil }
+    context 'when title is nil' do
+      let(:title) { nil }
 
-    it 'raises an error' do
-      expect { described_class.new(title, author) }.to raise_error(
-        ArgumentError, "The argument \(title\) does not belong to the class: String"
-      )
+      it 'raises an error' do
+        expect { described_class.new(title, author) }.to raise_error(
+          ArgumentError, "The argument \(title\) does not belong to the class: String"
+        )
+      end
     end
 
     context 'when title is short' do
@@ -34,12 +35,13 @@ RSpec.describe Book do
           ArgumentError, "The size of the argument \(title\) must be greater than #{min_length} elements"
         )
       end
+    end
 
-      context 'when author is nil'
-      # let(:author) { nil }
+    context 'when author is nil' do
+      let(:author) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(title, nil) }.to raise_error(
+        expect { described_class.new(title, author) }.to raise_error(
           ArgumentError, "The argument \(author\) does not belong to the class: Author"
         )
       end
