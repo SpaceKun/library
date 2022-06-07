@@ -6,8 +6,8 @@ class Book
   def initialize(title, author)
     @title = title
     @author = author
-    validate_length!
     validate_class!
+    validate_length!
   end
 
   private
