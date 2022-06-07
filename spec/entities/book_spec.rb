@@ -4,7 +4,7 @@ RSpec.describe Book do
 
   describe 'success' do
     it 'creates a new book' do
-      expect { described_class.new(title, author) }.to_not raise_error
+      expect { described_class.new(title, author) }.not_to raise_error
     end
 
     it 'sets attributes properly' do

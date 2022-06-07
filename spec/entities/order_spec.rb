@@ -42,7 +42,7 @@ RSpec.describe Order do
 
       it 'raise an error' do
         expect { described_class.new(book, reader, date) }.to raise_error(
-          TypeError, "no implicit conversion of nil into String"
+          TypeError, 'no implicit conversion of nil into String'
         )
       end
     end
