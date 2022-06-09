@@ -1,5 +1,6 @@
 RSpec.describe Reader do
   subject(:reader) { described_class.new(name, email, city, street, house) }
+
   let(:name) { 'Bo' }
   let(:email) { 'Bo_email@gmail.com' }
   let(:city) { 'Dnipro' }
@@ -26,7 +27,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument (name) does not belong to the class: String"
+          ArgumentError, 'The argument (name) does not belong to the class: String'
         )
       end
     end
@@ -48,7 +49,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument (email) does not belong to the class: String"
+          ArgumentError, 'The argument (email) does not belong to the class: String'
         )
       end
     end
@@ -70,7 +71,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument (city) does not belong to the class: String"
+          ArgumentError, 'The argument (city) does not belong to the class: String'
         )
       end
     end
@@ -92,7 +93,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument (street) does not belong to the class: String"
+          ArgumentError, 'The argument (street) does not belong to the class: String'
         )
       end
     end
@@ -114,7 +115,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument (house) does not belong to the class: Integer"
+          ArgumentError, 'The argument (house) does not belong to the class: Integer'
         )
       end
     end
@@ -124,7 +125,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument (house) does not positive"
+          ArgumentError, 'The argument (house) does not positive'
         )
       end
     end

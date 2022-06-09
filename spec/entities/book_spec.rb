@@ -1,5 +1,6 @@
 RSpec.describe Book do
   subject(:book) { described_class.new(title, author) }
+
   let(:title) { 'Help me know Rspec' }
   let(:author) { Author.new('name', 'biography') }
 
@@ -20,7 +21,7 @@ RSpec.describe Book do
 
       it 'raises an error' do
         expect { book }.to raise_error(
-          ArgumentError, "The argument (title) does not belong to the class: String"
+          ArgumentError, 'The argument (title) does not belong to the class: String'
         )
       end
     end
@@ -42,7 +43,7 @@ RSpec.describe Book do
 
       it 'raises an error' do
         expect { book }.to raise_error(
-          ArgumentError, "The argument (author) does not belong to the class: Author"
+          ArgumentError, 'The argument (author) does not belong to the class: Author'
         )
       end
     end

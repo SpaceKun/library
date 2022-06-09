@@ -1,5 +1,6 @@
 RSpec.describe Author do
   subject(:author) { described_class.new(name, biography) }
+
   let(:name) { 'John' }
   let(:biography) { 'biography' }
 
@@ -28,7 +29,7 @@ RSpec.describe Author do
 
       it 'raises an error' do
         expect { author }.to raise_error(
-          ArgumentError, "The argument (name) does not belong to the class: String"
+          ArgumentError, 'The argument (name) does not belong to the class: String'
         )
       end
     end
