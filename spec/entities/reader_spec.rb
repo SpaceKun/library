@@ -1,4 +1,5 @@
 RSpec.describe Reader do
+  subject(:reader) { described_class.new(name, email, city, street, house) }
   let(:name) { 'Bo' }
   let(:email) { 'Bo_email@gmail.com' }
   let(:city) { 'Dnipro' }
@@ -7,12 +8,11 @@ RSpec.describe Reader do
 
   describe 'success' do
     it 'creates a new reader' do
-      expect { described_class.new(name, email, city, street, house) }.not_to raise_error
+      expect { reader }.not_to raise_error
     end
   end
 
   it 'sets attributes properly' do
-    reader = described_class.new(name, email, city, street, house)
     expect(reader.name).to eq(name)
     expect(reader.email).to eq(email)
     expect(reader.city).to eq(city)
@@ -25,7 +25,7 @@ RSpec.describe Reader do
       let(:name) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The argument \(name\) does not belong to the class: String"
         )
       end
@@ -37,7 +37,7 @@ RSpec.describe Reader do
       min_length = 1
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The size of the argument \(name\) must be greater than #{min_length} elements"
         )
       end
@@ -47,7 +47,7 @@ RSpec.describe Reader do
       let(:email) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The argument \(email\) does not belong to the class: String"
         )
       end
@@ -59,7 +59,7 @@ RSpec.describe Reader do
       min_length = 1
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The size of the argument \(email\) must be greater than #{min_length} elements"
         )
       end
@@ -69,7 +69,7 @@ RSpec.describe Reader do
       let(:city) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The argument \(city\) does not belong to the class: String"
         )
       end
@@ -81,7 +81,7 @@ RSpec.describe Reader do
       min_length = 1
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The size of the argument \(city\) must be greater than #{min_length} elements"
         )
       end
@@ -91,7 +91,7 @@ RSpec.describe Reader do
       let(:street) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The argument \(street\) does not belong to the class: String"
         )
       end
@@ -103,7 +103,7 @@ RSpec.describe Reader do
       min_length = 1
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The size of the argument \(street\) must be greater than #{min_length} elements"
         )
       end
@@ -113,7 +113,7 @@ RSpec.describe Reader do
       let(:house) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The argument \(house\) does not belong to the class: Integer"
         )
       end
@@ -123,7 +123,7 @@ RSpec.describe Reader do
       let(:house) { -1 }
 
       it 'raises an error' do
-        expect { described_class.new(name, email, city, street, house) }.to raise_error(
+        expect { reader }.to raise_error(
           ArgumentError, "The argument \(house\) does not positive"
         )
       end

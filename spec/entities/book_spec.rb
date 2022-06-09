@@ -1,14 +1,14 @@
 RSpec.describe Book do
+  subject(:book) { described_class.new(title, author) }
   let(:title) { 'Help me know Rspec' }
   let(:author) { Author.new('name', 'biography') }
 
   describe 'success' do
     it 'creates a new book' do
-      expect { described_class.new(title, author) }.not_to raise_error
+      expect { book }.not_to raise_error
     end
 
     it 'sets attributes properly' do
-      book = described_class.new(title, author)
       expect(book.title).to eq(title)
       expect(book.author).to eq(author)
     end
@@ -19,7 +19,7 @@ RSpec.describe Book do
       let(:title) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(title, author) }.to raise_error(
+        expect { book }.to raise_error(
           ArgumentError, "The argument \(title\) does not belong to the class: String"
         )
       end
@@ -31,7 +31,7 @@ RSpec.describe Book do
       min_length = 1
 
       it 'raises an error' do
-        expect { described_class.new(title, author) }.to raise_error(
+        expect { book }.to raise_error(
           ArgumentError, "The size of the argument \(title\) must be greater than #{min_length} elements"
         )
       end
@@ -41,7 +41,7 @@ RSpec.describe Book do
       let(:author) { nil }
 
       it 'raises an error' do
-        expect { described_class.new(title, author) }.to raise_error(
+        expect { book }.to raise_error(
           ArgumentError, "The argument \(author\) does not belong to the class: Author"
         )
       end
