@@ -28,7 +28,7 @@ RSpec.describe Author do
 
       it 'raises an error' do
         expect { author }.to raise_error(
-          ArgumentError, "The argument \(name\) does not belong to the class: String"
+          ArgumentError, "The argument (name) does not belong to the class: String"
         )
       end
     end
@@ -40,7 +40,7 @@ RSpec.describe Author do
 
       it 'raises an error' do
         expect { author }.to raise_error(
-          ArgumentError, "The size of the argument \(name\) must be greater than #{min_length} elements"
+          ArgumentError, "The size of the argument (name) must be greater than #{min_length} elements"
         )
       end
     end

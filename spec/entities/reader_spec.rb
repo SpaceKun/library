@@ -26,7 +26,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument \(name\) does not belong to the class: String"
+          ArgumentError, "The argument (name) does not belong to the class: String"
         )
       end
     end
@@ -38,7 +38,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The size of the argument \(name\) must be greater than #{min_length} elements"
+          ArgumentError, "The size of the argument (name) must be greater than #{min_length} elements"
         )
       end
     end
@@ -48,7 +48,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument \(email\) does not belong to the class: String"
+          ArgumentError, "The argument (email) does not belong to the class: String"
         )
       end
     end
@@ -60,7 +60,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The size of the argument \(email\) must be greater than #{min_length} elements"
+          ArgumentError, "The size of the argument (email) must be greater than #{min_length} elements"
         )
       end
     end
@@ -70,7 +70,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument \(city\) does not belong to the class: String"
+          ArgumentError, "The argument (city) does not belong to the class: String"
         )
       end
     end
@@ -82,7 +82,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The size of the argument \(city\) must be greater than #{min_length} elements"
+          ArgumentError, "The size of the argument (city) must be greater than #{min_length} elements"
         )
       end
     end
@@ -92,7 +92,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument \(street\) does not belong to the class: String"
+          ArgumentError, "The argument (street) does not belong to the class: String"
         )
       end
     end
@@ -104,7 +104,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The size of the argument \(street\) must be greater than #{min_length} elements"
+          ArgumentError, "The size of the argument (street) must be greater than #{min_length} elements"
         )
       end
     end
@@ -114,7 +114,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument \(house\) does not belong to the class: Integer"
+          ArgumentError, "The argument (house) does not belong to the class: Integer"
         )
       end
     end
@@ -124,7 +124,7 @@ RSpec.describe Reader do
 
       it 'raises an error' do
         expect { reader }.to raise_error(
-          ArgumentError, "The argument \(house\) does not positive"
+          ArgumentError, "The argument (house) does not positive"
         )
       end
     end

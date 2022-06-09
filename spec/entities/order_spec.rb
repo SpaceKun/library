@@ -23,7 +23,7 @@ RSpec.describe Order do
 
       it 'raise an error' do
         expect { order }.to raise_error(
-          ArgumentError, "The argument \(book\) does not belong to the class: Book"
+          ArgumentError, "The argument (book) does not belong to the class: Book"
         )
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe Order do
 
       it 'raise an error' do
         expect { order }.to raise_error(
-          ArgumentError, "The argument \(reader\) does not belong to the class: Reader"
+          ArgumentError, "The argument (reader) does not belong to the class: Reader"
         )
       end
     end
