@@ -22,7 +22,7 @@ class Reader
 
   def validate_length!
     validate_length(@name, 'name', String, min_length: NAME_MIN_LENGTH)
-    validate_length(@email, 'email', String, min_length: EMAIL_MIN_LENGTH )
+    validate_length(@email, 'email', String, min_length: EMAIL_MIN_LENGTH)
     validate_length(@city, 'city', String, min_length: CITI_MIN_LENGTH)
     validate_length(@street, 'street', String, min_length: STREET_MIN_LENGTH)
   end

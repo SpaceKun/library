@@ -4,7 +4,6 @@ RSpec.describe Author do
   let(:name) { 'John' }
   let(:biography) { 'biography' }
 
-
   describe 'success' do
     it 'creates a new author' do
       expect { author }.not_to raise_error
