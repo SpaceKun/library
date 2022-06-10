@@ -3,6 +3,8 @@ class Author
   attr_reader :name
   attr_accessor :biography
 
+  NAME_MIN_LENGTH = 1
+
   def initialize(name, biography = '')
     @name = name
     @biography = biography
@@ -13,7 +15,7 @@ class Author
   private
 
   def validate_length!
-    validate_length(@name, 'name', String, min_length: 1)
+    validate_length(@name, 'name', String, min_length: NAME_MIN_LENGTH)
   end
 
   def validate_class!

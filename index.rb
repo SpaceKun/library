@@ -6,11 +6,12 @@ library.authors.push(Author.new('Seryoga', 'Gylik'))
 library.authors.push(Author.new('Ser'))
 library.books.push(Book.new('Брюс всемогущий', library.authors.last))
 
+
 library.save!
 
 # puts library.authors
 # puts library.orders
-# puts library.readers[6].name
+# puts library.readers[5].name
 # puts library.readers[7].name
 # puts library.books
 # puts library.orders.first.reader.name

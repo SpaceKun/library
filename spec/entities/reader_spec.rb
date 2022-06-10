@@ -34,8 +34,7 @@ RSpec.describe Reader do
 
     context 'when name is too short' do
       let(:name) { '' }
-
-      min_length = 1
+      let(:min_length) {Reader::NAME_MIN_LENGTH}
 
       it 'raises an error' do
         expect { reader }.to raise_error(
@@ -56,8 +55,7 @@ RSpec.describe Reader do
 
     context 'when email is too short' do
       let(:email) { '' }
-
-      min_length = 1
+      let(:min_length) {Reader::EMAIL_MIN_LENGTH}
 
       it 'raises an error' do
         expect { reader }.to raise_error(
@@ -78,8 +76,7 @@ RSpec.describe Reader do
 
     context 'when city is too short' do
       let(:city) { '' }
-
-      min_length = 1
+      let(:min_length) {Reader::CITI_MIN_LENGTH}
 
       it 'raises an error' do
         expect { reader }.to raise_error(
@@ -100,8 +97,7 @@ RSpec.describe Reader do
 
     context 'when street is too short' do
       let(:street) { '' }
-
-      min_length = 1
+      let(:min_length) {Reader::STREET_MIN_LENGTH}
 
       it 'raises an error' do
         expect { reader }.to raise_error(

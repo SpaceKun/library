@@ -4,6 +4,7 @@ RSpec.describe Author do
   let(:name) { 'John' }
   let(:biography) { 'biography' }
 
+
   describe 'success' do
     it 'creates a new author' do
       expect { author }.not_to raise_error
@@ -36,8 +37,7 @@ RSpec.describe Author do
 
     context 'when name is short' do
       let(:name) { '' }
-
-      min_length = 1
+      let(:min_length) { Author::NAME_MIN_LENGTH }
 
       it 'raises an error' do
         expect { author }.to raise_error(

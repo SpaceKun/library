@@ -28,8 +28,7 @@ RSpec.describe Book do
 
     context 'when title is short' do
       let(:title) { '' }
-
-      min_length = 1
+      let(:min_length) {Book::TITLE_MIN_LENGTH}
 
       it 'raises an error' do
         expect { book }.to raise_error(
