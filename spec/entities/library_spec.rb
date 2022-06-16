@@ -29,19 +29,19 @@ RSpec.describe Library do
     end
 
     it 'All authors correspond to the class Author' do
-      expect(library.authors.all? { |author| author.is_a?(Author)}).to be(true)
+      expect(library.authors).to all(be_a(Author))
     end
 
     it 'All books correspond to the class Book' do
-      expect(library.books.all? { |books| books.is_a?(Book)}).to be(true)
+      expect(library.books).to all(be_a(Book))
     end
 
     it 'All readers correspond to the class Reader' do
-      expect(library.readers.all? { |readers| readers.is_a?(Reader)}).to be(true)
+      expect(library.readers).to all(be_a(Reader))
     end
 
     it 'All orders correspond to the class Order' do
-      expect(library.orders.all? { |orders| orders.is_a?(Order)}).to be(true)
+      expect(library.orders).to all(be_a(Order))
     end
 
     it "method 'add' add new element" do
@@ -62,12 +62,8 @@ RSpec.describe Library do
     end
 
     it '' do
-      # author_1 = Author.new('Толстой', '')
-      # book = Book.new('Война', author_1)
-      # 100.times { library.books.push(book) }
-      # library.save!
 
-      expect( (library.top_book(1).map { |book| book.title }).to_s ).to eq((library.books[2].title))
+      expect( (library.top_book(1).map { |book| book.title }) ).to eq((library.books[2].title))
     end
 
   end
