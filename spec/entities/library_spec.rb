@@ -20,12 +20,7 @@ RSpec.describe Library do
   end
 
   after(:all) do
-    FileUtils.rm_rf('./spec/data_spec') if Dir.exist?('./spec/data_spec')
-    # File.delete('spec/data_spec/authors.yml') if File.exist?('./spec/data_spec/authors.yml')
-    # File.delete('spec/data_spec/readers.yml') if File.exist?('./spec/data_spec/readers.yml')
-    # File.delete('spec/data_spec/books.yml') if File.exist?('./spec/data_spec/books.yml')
-    # File.delete('spec/data_spec/orders.yml') if File.exist?('./spec/data_spec/orders.yml')
-    # Dir.unlink('spec/data_spec') if Dir.exist?('./spec/data_spec')
+    # FileUtils.rm_rf('./spec/data_spec') if Dir.exist?('./spec/data_spec')
   end
 
   describe 'success' do
@@ -49,15 +44,31 @@ RSpec.describe Library do
       expect(library.orders.all? { |orders| orders.is_a?(Order)}).to be(true)
     end
 
+    it "method 'add' add new element" do
+      author_name = Author.new('Sergey', '')
+      library.add(Author.new('Sergey', ''))
+      expect(library.authors.last.name).to eq(author_name.name)
+    end
+
     it "method 'save!' save new element" do
       stub_const('Storage::FILE_PATH', 'spec/data_spec/')
-      library.authors.push(Author.new('Ser'))
+      library.add(Author.new('Ser'))
 
       last_author = library.authors.last
-
       library.save!
 
-      expect(library.authors.last).to eq(last_author)
+      library_new = Library.new
+      expect(library_new.authors.last).to eq(last_author)
     end
+
+    it '' do
+      # author_1 = Author.new('Толстой', '')
+      # book = Book.new('Война', author_1)
+      # 100.times { library.books.push(book) }
+      # library.save!
+
+      expect( (library.top_book(1).map { |book| book.title }).to_s ).to eq((library.books[2].title))
+    end
+
   end
 end

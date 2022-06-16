@@ -12,12 +12,31 @@ class Library
 
   def add(value)
     case value
-    when Author then @authors.push(value) unless @authors.include?(value)
-    when Book then @books.push(value) unless @books.include?(value)
-    when Reader then @readers.push(value) unless @readers.include?(value)
-    when Order then @orders.push(value) unless @orders.include?(value)
-    else
-      puts "ERROR"
+    when Author
+      unless @authors.include?(value)
+        @authors.push(value)
+      else
+        raise NameError.new "This item (#{value}) has already been saved to the database."
+      end
+    when Book
+      unless @books.include?(value)
+        @books.push(value)
+      else
+        raise NameError.new "This item (#{value}) has already been saved to the database."
+      end
+    when Reader
+      unless @readers.include?(value)
+        @readers.push(value)
+      else
+        raise NameError.new "This item (#{value}) has already been saved to the database."
+      end
+    when Order
+      unless @orders.include?(value)
+        @orders.push(value)
+      else
+        raise NameError.new "This item (#{value}) has already been saved to the database."
+      end
+    else raise ArgumentError.new, "wrong class passed"
     end
   end
 
