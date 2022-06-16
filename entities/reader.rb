@@ -18,6 +18,18 @@ class Reader
     validate_positive!
   end
 
+  def ==(other)
+    if other.is_a? Reader
+      @name == other.name &&
+      @email == other.email &&
+      @city == other.city &&
+      @street == other.street &&
+      @house == other.house
+    else
+      false
+    end
+  end
+
   private
 
   def validate_length!

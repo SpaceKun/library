@@ -20,11 +20,12 @@ RSpec.describe Library do
   end
 
   after(:all) do
-    File.delete('spec/data_spec/authors.yml') if File.exist?('./spec/data_spec/authors.yml')
-    File.delete('spec/data_spec/readers.yml') if File.exist?('./spec/data_spec/readers.yml')
-    File.delete('spec/data_spec/books.yml') if File.exist?('./spec/data_spec/books.yml')
-    File.delete('spec/data_spec/orders.yml') if File.exist?('./spec/data_spec/orders.yml')
-    Dir.unlink('spec/data_spec') if Dir.exist?('./spec/data_spec')
+    FileUtils.rm_rf('./spec/data_spec') if Dir.exist?('./spec/data_spec')
+    # File.delete('spec/data_spec/authors.yml') if File.exist?('./spec/data_spec/authors.yml')
+    # File.delete('spec/data_spec/readers.yml') if File.exist?('./spec/data_spec/readers.yml')
+    # File.delete('spec/data_spec/books.yml') if File.exist?('./spec/data_spec/books.yml')
+    # File.delete('spec/data_spec/orders.yml') if File.exist?('./spec/data_spec/orders.yml')
+    # Dir.unlink('spec/data_spec') if Dir.exist?('./spec/data_spec')
   end
 
   describe 'success' do

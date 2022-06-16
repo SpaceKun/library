@@ -1,9 +1,18 @@
 module Storage
-    FILE_PATH = './data/'
+  FILE_PATH = './data/'
 
   def load_yaml_file(name_file:)
-    name = name_file.to_s.downcase.delete('.yml')
-    Psych.load_file( FILE_PATH + name + '.yml')
+    name = name_file.to_s.downcase
+    file =  FILE_PATH + name
+    if File.exist?(file)
+      Psych.load_file(file)
+    else
+      array = [].to_yaml
+      file = File.new(file, 'w+')
+      file.write(array)
+      file.close
+      Psych.load_file(file)
+    end
   end
 
   def save(lib_entities:, class_entity:)

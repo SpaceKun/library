@@ -1,4 +1,5 @@
 require './autoload'
+require './modules/database_filler'
 
 include DatabaseFiller
 

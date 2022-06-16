@@ -10,6 +10,17 @@ class Library
     @authors = load_yaml_file(name_file: 'authors.yml')
   end
 
+  def add(value)
+    case value
+    when Author then @authors.push(value) unless @authors.include?(value)
+    when Book then @books.push(value) unless @books.include?(value)
+    when Reader then @readers.push(value) unless @readers.include?(value)
+    when Order then @orders.push(value) unless @orders.include?(value)
+    else
+      puts "ERROR"
+    end
+  end
+
   def save!
     save(lib_entities: @books, class_entity: 'Book')
     save(lib_entities: @orders, class_entity: 'Order')
