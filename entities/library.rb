@@ -11,31 +11,12 @@ class Library
   end
 
   def add(value)
+    validate_duplication!(value)
     case value
-    when Author
-      unless @authors.include?(value)
-        @authors.push(value)
-      else
-        raise NameError.new "This item (#{value}) has already been saved to the database."
-      end
-    when Book
-      unless @books.include?(value)
-        @books.push(value)
-      else
-        raise NameError.new "This item (#{value}) has already been saved to the database."
-      end
-    when Reader
-      unless @readers.include?(value)
-        @readers.push(value)
-      else
-        raise NameError.new "This item (#{value}) has already been saved to the database."
-      end
-    when Order
-      unless @orders.include?(value)
-        @orders.push(value)
-      else
-        raise NameError.new "This item (#{value}) has already been saved to the database."
-      end
+    when Author then @authors.push(value) unless @authors.include?(value)
+    when Book then @books.push(value) unless @books.include?(value)
+    when Reader then @readers.push(value) unless @readers.include?(value)
+    when Order then @orders.push(value) unless @orders.include?(value)
     else raise ArgumentError.new, "wrong class passed"
     end
   end
@@ -67,5 +48,13 @@ class Library
       top_book_title.include?(order.book.title)
     end
     orders_with_top_book.map(&:reader).uniq(&:email).count
+  end
+
+  private
+
+  def validate_duplication!(value)
+    if [@authors, @books, @readers, @orders].flatten.include?(value)
+      warn ArgumentError.new "This item (#{value}) has already been saved to the database."
+    end
   end
 end

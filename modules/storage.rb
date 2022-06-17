@@ -7,9 +7,8 @@ module Storage
     if File.exist?(file)
       Psych.load_file(file)
     else
-      array = [].to_yaml
       file = File.new(file, 'w+')
-      file.write(array)
+      file.write([].to_yaml)
       file.close
       Psych.load_file(file)
     end

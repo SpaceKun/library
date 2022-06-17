@@ -20,7 +20,7 @@ RSpec.describe Library do
   end
 
   after(:all) do
-    # FileUtils.rm_rf('./spec/data_spec') if Dir.exist?('./spec/data_spec')
+    FileUtils.rm_rf('./spec/data_spec') if Dir.exist?('./spec/data_spec')
   end
 
   describe 'success' do
