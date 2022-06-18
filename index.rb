@@ -16,7 +16,7 @@ puts library.readers[0].name
 puts library.books
 puts library.orders.first.reader.name
 puts library.top_book(1).first.title
-puts library.top_book(2).map { |book| book.title}
-puts library.top_reader(2).map { |reader| reader.name}
+puts library.top_book(2).map(&:title)
+puts library.top_reader(2).map(&:name)
 
 puts library.count_readers_top_book(3)

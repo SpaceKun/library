@@ -1,8 +1,8 @@
 module DatabaseFiller
-  AUTHORS_YML_PATH = 'data/authors.yml'
-  BOOKS_YML_PATH = './data/books.yml'
-  READERS_YML_PATH = './data/readers.yml'
-  ORDERS_YML_PATH = './data/orders.yml'
+  AUTHORS_YML_PATH = 'data/authors.yml'.freeze
+  BOOKS_YML_PATH = './data/books.yml'.freeze
+  READERS_YML_PATH = './data/readers.yml'.freeze
+  ORDERS_YML_PATH = './data/orders.yml'.freeze
 
   def fill_with_fake_data
     author_1 = Author.new('Толстой', '')
@@ -60,7 +60,7 @@ module DatabaseFiller
 
     orders_to_yaml = [order_1, order_2, order_3, order_4, order_5, order_6, order_7, order_8, order_9, order_10].to_yaml
 
-    file = File.new(ORDERS_YML_PATH , 'w+')
+    file = File.new(ORDERS_YML_PATH, 'w+')
     file.write(orders_to_yaml)
     file.close
   end

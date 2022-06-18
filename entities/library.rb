@@ -17,7 +17,7 @@ class Library
     when Book then @books.push(value) unless @books.include?(value)
     when Reader then @readers.push(value) unless @readers.include?(value)
     when Order then @orders.push(value) unless @orders.include?(value)
-    else raise ArgumentError.new, "wrong class passed"
+    else raise ArgumentError.new, 'wrong class passed'
     end
   end
 

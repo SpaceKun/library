@@ -1,11 +1,11 @@
 RSpec.describe Library do
-  subject(:library) { Library.new }
+  subject(:library) { described_class.new }
 
   before(:all) do
     Dir.mkdir('spec/data_spec') unless Dir.exist?('spec/data_spec')
   end
 
-  before(:each) do
+  before do
     stub_const('DatabaseFiller::AUTHORS_YML_PATH', './spec/data_spec/authors.yml')
     stub_const('DatabaseFiller::BOOKS_YML_PATH', './spec/data_spec/books.yml')
     stub_const('DatabaseFiller::READERS_YML_PATH', './spec/data_spec/readers.yml')
@@ -25,7 +25,7 @@ RSpec.describe Library do
 
   describe 'success' do
     it 'creates a new library' do
-      expect { Library.new }.not_to raise_error
+      expect { described_class.new }.not_to raise_error
     end
 
     it 'All authors correspond to the class Author' do
@@ -57,18 +57,18 @@ RSpec.describe Library do
       last_author = library.authors.last
       library.save!
 
-      library_new = Library.new
+      library_new = described_class.new
       expect(library_new.authors.last).to eq(last_author)
     end
 
     it "method 'top_book' not raise error" do
-      expect{ library.top_book(1) }.not_to raise_error
+      expect { library.top_book(1) }.not_to raise_error
     end
 
     it "method 'top_book' returns the right number of values" do
-      expect( library.top_book.size ).to eq(1)
-      expect( library.top_book(1).size ).to eq(1)
-      expect( library.top_book(2).size ).to eq(2)
+      expect(library.top_book.size).to eq(1)
+      expect(library.top_book(1).size).to eq(1)
+      expect(library.top_book(2).size).to eq(2)
     end
 
     it "method 'top_book' return top book in library" do
@@ -81,18 +81,18 @@ RSpec.describe Library do
       library.readers.push(reader)
       100.times { library.orders.push(order) }
 
-      expect( library.top_book.first.class ).to eq( Book )
-      expect( library.top_book(1).first.title ).to eq( book.title )
+      expect(library.top_book.first.class).to eq(Book)
+      expect(library.top_book(1).first.title).to eq(book.title)
     end
 
     it "method 'top_reader' not raise error" do
-      expect{ library.top_reader(1) }.not_to raise_error
+      expect { library.top_reader(1) }.not_to raise_error
     end
 
     it "method 'top_reader' returns the right number of values" do
-      expect( library.top_reader.size ).to eq(1)
-      expect( library.top_reader(1).size ).to eq(1)
-      expect( library.top_reader(2).size ).to eq(2)
+      expect(library.top_reader.size).to eq(1)
+      expect(library.top_reader(1).size).to eq(1)
+      expect(library.top_reader(2).size).to eq(2)
     end
 
     it "method 'top_reader' return top reader in library" do
@@ -105,45 +105,43 @@ RSpec.describe Library do
       library.readers.push(reader)
       100.times { library.orders.push(order) }
 
-      expect( library.top_reader(1).first.class ).to eq( Reader )
-      expect( library.top_reader(1).first.name ).to eq( reader.name )
+      expect(library.top_reader(1).first.class).to eq(Reader)
+      expect(library.top_reader(1).first.name).to eq(reader.name)
     end
 
     it "method 'count_readers_top_book' not raise error" do
-      expect{ library.count_readers_top_book(3) }.not_to raise_error
+      expect { library.count_readers_top_book(3) }.not_to raise_error
     end
 
-    it "method 'count_readers_top_book' " do
+    it "method 'count_readers_top_book'" do
       author = Author.new('Марвел', 'снимаю шляпу')
-      book = [ Book.new('Человек паук', author), Book.new('паук', author), Book.new('Человек', author) ]
-      reader = [ Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3),
-        Reader.new('Военком', 'Vova@gmail.com', 'Тортуга', 'Mira', 3),
-        Reader.new('Военком', 'Vov@gmail.com', 'Тортуга', 'Mira', 3)
-      ]
-      order = [ Order.new(book.sample, reader.sample, '15.05.25'),
-      Order.new(book.sample, reader.sample, '16.05.25'),
-      Order.new(book.sample, reader.sample, '17.05.25')
-    ]
-    library.authors.push(author)
-    100.times { library.books.push(book) }
-    100.times { library.readers.push(reader) }
-    100.times { library.orders.push(order.sample) }
+      book = [Book.new('Человек паук', author), Book.new('паук', author), Book.new('Человек', author)]
+      reader = [Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3),
+                Reader.new('Военком', 'Vova@gmail.com', 'Тортуга', 'Mira', 3),
+                Reader.new('Военком', 'Vov@gmail.com', 'Тортуга', 'Mira', 3)]
+      order = [Order.new(book.sample, reader.sample, '15.05.25'),
+               Order.new(book.sample, reader.sample, '16.05.25'),
+               Order.new(book.sample, reader.sample, '17.05.25')]
+      library.authors.push(author)
+      100.times { library.books.push(book) }
+      100.times { library.readers.push(reader) }
+      100.times { library.orders.push(order.sample) }
 
-    # puts library.count_readers_top_book(3)
-    expect( library.count_readers_top_book(3).class ).to eq(Integer)
-    # expect( library.count_readers_top_book(3) ).to eq(5)
+      # puts library.count_readers_top_book(3)
+      expect(library.count_readers_top_book(3).class).to eq(Integer)
+      # expect( library.count_readers_top_book(3) ).to eq(5)
     end
   end
 
-    describe 'failure' do
+  describe 'failure' do
     it 'creates a new library with argument' do
-      expect { Library.new(Book.new) }.to raise_error
+      expect { described_class.new(Book.new) }.to raise_error
     end
 
     it "method 'add' add new element raises an error" do
-      expect{ library.add('kek') }.to raise_error(
-        ArgumentError, "wrong class passed"
-        )
+      expect { library.add('kek') }.to raise_error(
+        ArgumentError, 'wrong class passed'
+      )
     end
   end
 end

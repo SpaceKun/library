@@ -21,10 +21,10 @@ class Reader
   def ==(other)
     if other.is_a? Reader
       @name == other.name &&
-      @email == other.email &&
-      @city == other.city &&
-      @street == other.street &&
-      @house == other.house
+        @email == other.email &&
+        @city == other.city &&
+        @street == other.street &&
+        @house == other.house
     else
       false
     end

@@ -13,7 +13,7 @@ class Order
   def ==(other)
     if other.is_a? Order
       @book == other.book &&
-      @reader == other.reader
+        @reader == other.reader
       @date == other.date
     else
       false
