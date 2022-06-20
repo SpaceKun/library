@@ -114,22 +114,33 @@ RSpec.describe Library do
     end
 
     it "method 'count_readers_top_book'" do
-      author = Author.new('Марвел', 'снимаю шляпу')
-      book = [Book.new('Человек паук', author), Book.new('паук', author), Book.new('Человек', author)]
-      reader = [Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3),
-                Reader.new('Военком', 'Vova@gmail.com', 'Тортуга', 'Mira', 3),
-                Reader.new('Военком', 'Vov@gmail.com', 'Тортуга', 'Mira', 3)]
-      order = [Order.new(book.sample, reader.sample, '15.05.25'),
-               Order.new(book.sample, reader.sample, '16.05.25'),
-               Order.new(book.sample, reader.sample, '17.05.25')]
-      library.authors.push(author)
-      100.times { library.books.push(book) }
-      100.times { library.readers.push(reader) }
-      100.times { library.orders.push(order.sample) }
+      library.authors.push( author = Author.new('Марвел', 'снимаю шляпу') )
+      library.books.push( book1 = Book.new('Человек паук', author) )
+      library.books.push( book2 = Book.new('Человек', author) )
+      library.books.push( book3 = Book.new('Паук', author) )
+      library.readers.push( reader1 = Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3) )
+      library.readers.push( reader2 = Reader.new('Военком', 'Vova@gmail.com', 'Тортуга', 'Mira', 3) )
+      library.readers.push( reader3 = Reader.new('Военком', 'Vov@gmail.com', 'Тортуга', 'Mira', 3) )
+      library.readers.push( reader4 = Reader.new('Военком', 'Vo@gmail.com', 'Тортуга', 'Mira', 3) )
+      library.readers.push( reader5 = Reader.new('Военком', 'V@gmail.com', 'Тортуга', 'Mira', 3) )
+      library.orders.push( order1 = Order.new(book1, reader1, '15.05.25') )
+      library.orders.push( order2 = Order.new(book1, reader2, '16.05.25') )
+      library.orders.push( order3 = Order.new(book1, reader3, '17.05.25') )
+      library.orders.push( order4 = Order.new(book1, reader4, '17.05.25') )
+      library.orders.push( order5 = Order.new(book1, reader5, '17.05.25') )
+      library.orders.push( order1 = Order.new(book2, reader1, '15.05.25') )
+      library.orders.push( order2 = Order.new(book2, reader2, '16.05.25') )
+      library.orders.push( order3 = Order.new(book2, reader3, '17.05.25') )
+      library.orders.push( order4 = Order.new(book2, reader4, '17.05.25') )
+      library.orders.push( order5 = Order.new(book2, reader5, '17.05.25') )
+      library.orders.push( order1 = Order.new(book3, reader1, '15.05.25') )
+      library.orders.push( order2 = Order.new(book3, reader2, '16.05.25') )
+      library.orders.push( order3 = Order.new(book3, reader3, '17.05.25') )
+      library.orders.push( order4 = Order.new(book3, reader4, '17.05.25') )
+      library.orders.push( order5 = Order.new(book3, reader5, '17.05.25') )
 
-      # puts library.count_readers_top_book(3)
       expect(library.count_readers_top_book(3).class).to eq(Integer)
-      # expect( library.count_readers_top_book(3) ).to eq(5)
+      expect( library.count_readers_top_book(3) ).to eq(5)
     end
   end
 
@@ -139,9 +150,31 @@ RSpec.describe Library do
     end
 
     it "method 'add' add new element raises an error" do
-      expect { library.add('kek') }.to raise_error(
-        ArgumentError, 'wrong class passed'
-      )
+      expect { library.add( 'kek' ) }.to raise_error(ArgumentError, 'wrong class passed')
+    end
+
+    it "method 'top_book' convey text value" do
+      expect { library.top_book('hello') }.to raise_error(TypeError, 'no implicit conversion of String into Integer')
+    end
+
+    it "method 'top_book' convey negative value" do
+      expect { library.top_book(-1) }.to raise_error(ArgumentError, 'negative size (-1)')
+    end
+
+    it "method 'top_reader' convey text value" do
+      expect { library.top_reader('hello') }.to raise_error(TypeError, 'no implicit conversion of String into Integer')
+    end
+
+    it "method 'top_reader' convey negative value" do
+      expect { library.top_reader(-1) }.to raise_error(ArgumentError, 'negative size (-1)')
+    end
+
+    it "method 'count_readers_top_book' convey text value" do
+      expect { library.count_readers_top_book('hello') }.to raise_error(TypeError, 'no implicit conversion of String into Integer')
+    end
+
+    it "method 'count_readers_top_book' convey negative value" do
+      expect { library.count_readers_top_book(-1) }.to raise_error(ArgumentError, 'negative size (-1)')
     end
   end
 end

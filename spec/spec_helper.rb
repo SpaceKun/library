@@ -17,7 +17,7 @@ require_relative '../modules/database_filler'
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  # rspec-expectations config goes here. You can use an alternate
+  # -expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.expect_with :rspec do |expectations|
@@ -28,8 +28,8 @@ RSpec.configure do |config|
     #     # => "be bigger than 2 and smaller than 4"
     # ...rather than:
     #     # => "be bigger than 2"
+    expectations.on_potential_false_positives = :nothing
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
-
     config.include DatabaseFiller
   end
 
