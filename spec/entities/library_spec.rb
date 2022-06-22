@@ -1,5 +1,6 @@
 RSpec.describe Library do
   subject(:library) { described_class.new }
+
   let(:seconds_in_day) { 60 * 60 * 24 }
   let(:author) { Author.new('Марвел', 'снимаю шляпу') }
   let(:book) { Book.new('Человек паук', author) }
@@ -77,7 +78,7 @@ RSpec.describe Library do
 
     it "method 'top_book' return top book in library" do
       100.times do |index|
-        date = (Time.now - seconds_in_day * index).to_s.split.first
+        date = (Time.now - (seconds_in_day * index)).to_s.split.first
         order = Order.new(book, reader, date)
         library.add(order)
       end
@@ -98,7 +99,7 @@ RSpec.describe Library do
 
     it "method 'top_reader' return top reader in library" do
       100.times do |index|
-        date = (Time.now - seconds_in_day * index).to_s.split.first
+        date = (Time.now - (seconds_in_day * index)).to_s.split.first
         order = Order.new(book, reader, date)
         library.add(order)
       end
@@ -123,11 +124,13 @@ RSpec.describe Library do
 
   describe 'failure' do
     it 'creates a new library with argument' do
-      expect { described_class.new(Book.new) }.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 2)')
+      expect do
+        described_class.new(Book.new)
+      end.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 2)')
     end
 
     it "method 'add' add new element raises an error" do
-      expect { library.add( 'kek' ) }.to raise_error(ArgumentError, 'wrong class passed')
+      expect { library.add('kek') }.to raise_error(ArgumentError, 'wrong class passed')
     end
 
     it "method 'top_book' convey text value" do
@@ -147,7 +150,9 @@ RSpec.describe Library do
     end
 
     it "method 'count_readers_top_book' convey text value" do
-      expect { library.count_readers_top_book('hello') }.to raise_error(TypeError, 'no implicit conversion of String into Integer')
+      expect do
+        library.count_readers_top_book('hello')
+      end.to raise_error(TypeError, 'no implicit conversion of String into Integer')
     end
 
     it "method 'count_readers_top_book' convey negative value" do

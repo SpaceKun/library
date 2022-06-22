@@ -14,7 +14,7 @@ class Order
     if other.is_a? Order
       @book == other.book &&
         @reader == other.reader &&
-      @date == other.date
+        @date == other.date
     else
       false
     end

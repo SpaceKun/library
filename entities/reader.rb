@@ -20,7 +20,8 @@ class Reader
 
   def ==(other)
     return false unless other.is_a? Reader
-      @name == other.name &&
+
+    @name == other.name &&
       @email == other.email &&
       @city == other.city &&
       @street == other.street &&
