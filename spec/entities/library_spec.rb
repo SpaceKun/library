@@ -1,5 +1,9 @@
 RSpec.describe Library do
   subject(:library) { described_class.new }
+  let(:seconds_in_day) { 60 * 60 * 24 }
+  let(:author) { Author.new('Марвел', 'снимаю шляпу') }
+  let(:book) { Book.new('Человек паук', author) }
+  let(:reader) { Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3) }
 
   before(:all) do
     Dir.mkdir('spec/data_spec') unless Dir.exist?('spec/data_spec')
@@ -72,14 +76,11 @@ RSpec.describe Library do
     end
 
     it "method 'top_book' return top book in library" do
-      author = Author.new('Марвел', 'снимаю шляпу')
-      book = Book.new('Человек паук', author)
-      reader = Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3)
-      order = Order.new(book, reader, '15.05.25')
-      library.authors.push(author)
-      library.books.push(book)
-      library.readers.push(reader)
-      100.times { library.orders.push(order) }
+      100.times do |index|
+        date = (Time.now - seconds_in_day * index).to_s.split.first
+        order = Order.new(book, reader, date)
+        library.add(order)
+      end
 
       expect(library.top_book.first.class).to eq(Book)
       expect(library.top_book(1).first.title).to eq(book.title)
@@ -96,14 +97,11 @@ RSpec.describe Library do
     end
 
     it "method 'top_reader' return top reader in library" do
-      author = Author.new('Марвел', 'снимаю шляпу')
-      book = Book.new('Человек паук', author)
-      reader = Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3)
-      order = Order.new(book, reader, '15.05.25')
-      library.authors.push(author)
-      library.books.push(book)
-      library.readers.push(reader)
-      100.times { library.orders.push(order) }
+      100.times do |index|
+        date = (Time.now - seconds_in_day * index).to_s.split.first
+        order = Order.new(book, reader, date)
+        library.add(order)
+      end
 
       expect(library.top_reader(1).first.class).to eq(Reader)
       expect(library.top_reader(1).first.name).to eq(reader.name)
@@ -114,39 +112,18 @@ RSpec.describe Library do
     end
 
     it "method 'count_readers_top_book'" do
-      library.authors.push( author = Author.new('Марвел', 'снимаю шляпу') )
-      library.books.push( book1 = Book.new('Человек паук', author) )
-      library.books.push( book2 = Book.new('Человек', author) )
-      library.books.push( book3 = Book.new('Паук', author) )
-      library.readers.push( reader1 = Reader.new('Военком', 'Vovan@gmail.com', 'Тортуга', 'Mira', 3) )
-      library.readers.push( reader2 = Reader.new('Военком', 'Vova@gmail.com', 'Тортуга', 'Mira', 3) )
-      library.readers.push( reader3 = Reader.new('Военком', 'Vov@gmail.com', 'Тортуга', 'Mira', 3) )
-      library.readers.push( reader4 = Reader.new('Военком', 'Vo@gmail.com', 'Тортуга', 'Mira', 3) )
-      library.readers.push( reader5 = Reader.new('Военком', 'V@gmail.com', 'Тортуга', 'Mira', 3) )
-      library.orders.push( order1 = Order.new(book1, reader1, '15.05.25') )
-      library.orders.push( order2 = Order.new(book1, reader2, '16.05.25') )
-      library.orders.push( order3 = Order.new(book1, reader3, '17.05.25') )
-      library.orders.push( order4 = Order.new(book1, reader4, '17.05.25') )
-      library.orders.push( order5 = Order.new(book1, reader5, '17.05.25') )
-      library.orders.push( order1 = Order.new(book2, reader1, '15.05.25') )
-      library.orders.push( order2 = Order.new(book2, reader2, '16.05.25') )
-      library.orders.push( order3 = Order.new(book2, reader3, '17.05.25') )
-      library.orders.push( order4 = Order.new(book2, reader4, '17.05.25') )
-      library.orders.push( order5 = Order.new(book2, reader5, '17.05.25') )
-      library.orders.push( order1 = Order.new(book3, reader1, '15.05.25') )
-      library.orders.push( order2 = Order.new(book3, reader2, '16.05.25') )
-      library.orders.push( order3 = Order.new(book3, reader3, '17.05.25') )
-      library.orders.push( order4 = Order.new(book3, reader4, '17.05.25') )
-      library.orders.push( order5 = Order.new(book3, reader5, '17.05.25') )
+      top_book = library.top_book(1).first
+      orders_of_top_book = library.orders.select { |order| order.book.title == top_book.title }
+      expected_count = orders_of_top_book.map(&:reader).uniq(&:email).count
 
+      expect(library.count_readers_top_book(1)).to eq(expected_count)
       expect(library.count_readers_top_book(3).class).to eq(Integer)
-      expect( library.count_readers_top_book(3) ).to eq(5)
     end
   end
 
   describe 'failure' do
     it 'creates a new library with argument' do
-      expect { described_class.new(Book.new) }.to raise_error
+      expect { described_class.new(Book.new) }.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 2)')
     end
 
     it "method 'add' add new element raises an error" do

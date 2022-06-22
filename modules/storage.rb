@@ -4,8 +4,7 @@ module Storage
   def load_yaml_file(name_file:)
     name = name_file.to_s.downcase
     file = FILE_PATH + name
-    if File.exist?(file)
-    else
+    unless File.exist?(file)
       file = File.new(file, 'w+')
       file.write([].to_yaml)
       file.close
