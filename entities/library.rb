@@ -32,7 +32,7 @@ class Library
   end
 
   def count_readers_top_book(count = 3)
-   top_book_title = top_book(count).map(&:title)
+    top_book_title = top_book(count).map(&:title)
     orders_with_top_book = orders.select do |order|
       top_book_title.include?(order.book.title)
     end

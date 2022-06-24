@@ -1,7 +1,6 @@
 require 'yaml'
 require 'date'
 require 'psych'
-require 'pry'
 require './modules/validation'
 require './entities/author'
 require './entities/book'
