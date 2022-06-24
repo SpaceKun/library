@@ -10,6 +10,16 @@ class Order
     validate_class!
   end
 
+  def ==(other)
+    if other.is_a? Order
+      @book == other.book &&
+        @reader == other.reader &&
+        @date == other.date
+    else
+      false
+    end
+  end
+
   private
 
   def validate_class!

@@ -12,6 +12,15 @@ class Author
     validate_length!
   end
 
+  def ==(other)
+    if other.is_a? Author
+      @name == other.name &&
+        @biography == other.biography
+    else
+      false
+    end
+  end
+
   private
 
   def validate_length!

@@ -4,7 +4,7 @@ class Reader
 
   NAME_MIN_LENGTH = 1
   EMAIL_MIN_LENGTH = 3
-  CITI_MIN_LENGTH = 1
+  CITY_MIN_LENGTH = 1
   STREET_MIN_LENGTH = 1
 
   def initialize(name, email, city, street, house)
@@ -18,12 +18,22 @@ class Reader
     validate_positive!
   end
 
+  def ==(other)
+    return false unless other.is_a? Reader
+
+    @name == other.name &&
+      @email == other.email &&
+      @city == other.city &&
+      @street == other.street &&
+      @house == other.house
+  end
+
   private
 
   def validate_length!
     validate_length(@name, 'name', String, min_length: NAME_MIN_LENGTH)
     validate_length(@email, 'email', String, min_length: EMAIL_MIN_LENGTH)
-    validate_length(@city, 'city', String, min_length: CITI_MIN_LENGTH)
+    validate_length(@city, 'city', String, min_length: CITY_MIN_LENGTH)
     validate_length(@street, 'street', String, min_length: STREET_MIN_LENGTH)
   end
 

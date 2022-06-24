@@ -10,6 +10,17 @@ class Library
     @authors = load_yaml_file(name_file: 'authors.yml')
   end
 
+  def add(value)
+    validate_duplication!(value)
+    case value
+    when Author then @authors.push(value) unless @authors.include?(value)
+    when Book then @books.push(value) unless @books.include?(value)
+    when Reader then @readers.push(value) unless @readers.include?(value)
+    when Order then @orders.push(value) unless @orders.include?(value)
+    else raise ArgumentError.new, 'wrong class passed'
+    end
+  end
+
   def save!
     save(lib_entities: @books, class_entity: 'Book')
     save(lib_entities: @orders, class_entity: 'Order')
@@ -37,5 +48,13 @@ class Library
       top_book_title.include?(order.book.title)
     end
     orders_with_top_book.map(&:reader).uniq(&:email).count
+  end
+
+  private
+
+  def validate_duplication!(value)
+    if [@authors, @books, @readers, @orders].flatten.include?(value)
+      warn ArgumentError.new "This item (#{value}) has already been saved to the database."
+    end
   end
 end

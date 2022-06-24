@@ -12,3 +12,6 @@ Style/FrozenStringLiteralComment:
 Naming/VariableNumber:
   Exclude:
     - load_data_base.rb
+    - modules/database_filler.rb
+RSpec/MultipleExpectations:
+  Max: 6
