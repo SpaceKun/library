@@ -129,7 +129,7 @@ RSpec.describe Library do
       end.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 2)')
     end
 
-    it "method 'add' add new element raises an error" do
+    it "method 'add' add new no valid element raises an error" do
       expect { library.add('kek') }.to raise_error(ArgumentError, 'wrong class passed')
     end
 
