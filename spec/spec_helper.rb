@@ -1,3 +1,7 @@
+require 'simplecov'
+SimpleCov.start
+SimpleCov.minimum_coverage 95
+
 require_relative '../autoload'
 require_relative '../modules/database_filler'
 
