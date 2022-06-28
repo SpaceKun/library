@@ -125,8 +125,8 @@ RSpec.describe Library do
   describe 'failure' do
     it 'creates a new library with argument' do
       expect do
-        described_class.new(Book.new)
-      end.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 2)')
+        described_class.new('kek')
+      end.to raise_error(ArgumentError, 'wrong number of arguments (given 1, expected 0)')
     end
 
     it "method 'add' add new no valid element raises an error" do
